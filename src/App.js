@@ -16,10 +16,10 @@ function EmojiButton({ emoji }) {
 }
 
 function EmojiMap() {
-  const emojis = ["😂","❤️","😍","🤣","😊","🙏","💕","😭","😘","👍","😅","👏","😁","🔥","💔","💖","😢","🤔","😆","🙄","💪","😉","☺️","👌","🤗","😔","😎","😇","🌹","🤦","🎉","💞","✌️","✨","🤷","😱","😌","🌸","🙌","😋","😏","🙂","🤩","😄","😀","😃","💯","🙈","👇","🎶","😒","🤭","❣️","❗","😜","💋","👀","😪","😑","💥","🙋","😞","😩","😡","🤪","👊","☀️","😥","🤤","👉","💃","😳","✋","😚","😝","😴","🌟","😬","🙃","🍀","🌷","😻","😓","⭐","✅","🌈","😈","🤘","💦","✔️","😣","🏃","💐","☹️","🎊","💘","😠","☝️","😕","🌺"];
+  const emojis = ["😂","❤️","😍","🤣","😊","🙏","💕","😭","😘","👍","😅","👏","😁","🔥","💔","💖","😢","🤔","😆","🙄","💪","😉","☺️","👌","🤗","😔","😎","😇","🌹","🤦","🎉","💞","✌️","✨","🤷","😱","😌","🌸","🙌","😋","😏","🙂","🤩","😄","😀","😃","💯","🙈","👇","🎶","😒","🤭","❣️","❗","😜","💋","👀","😪","😑","💥","🙋","😞","😩","😡","🤪","👊","☀️","😥","🤤","👉","💃","😳","✋","😚","😝","😴","🌟","😬","🙃","🍀","🌷","😻","😓","⭐","✅","🌈","😈","🤘","💦","✔️","😣","🏃","💐","☹️","🎊","💘","😠","😕","🌺"];
 
   return (
-    <div className="w-1/2 p-1 bg-gray-900 flex flex-row flex-wrap items-start gap-1 content-start overflow-scroll" style={{ flex: 1 }}>
+    <div className="p-1 bg-gray-900 flex flex-row flex-wrap items-start gap-1 content-start overflow-scroll" style={{ flex: 1 }}>
       { emojis.map((emoji, index)=>{ return (<EmojiButton key={`emoji-${index}`} emoji={emoji} />) }) }
     </div>
   )
@@ -37,7 +37,7 @@ function ScaleUpEmoji({emoji, id}) {
     return () => {
       // Nothing to do here but return the function anyway
     }
-  }, []);
+  }, [id, removeEmoji]);
   return (<div ref={eRef} className="absolute scaleup">{emoji}</div>)
 }
 
@@ -46,13 +46,13 @@ function App() {
   return (
     <div className="w-screen h-screen">
       <div className="w-full h-full flex flex-col items-center">
-        <div className="w-full h-full grid place-items-center relative" style={{ flex: 2 }}>
+        <EmojiMap />
+        <div className="w-full h-full grid place-items-center relative border border-red-500 border-solid" style={{ flex: 2 }}>
           {
             Object.entries(emoji).map(
               ([id, emoji])=>(<ScaleUpEmoji key={`emoji-${id}`} id={id} emoji={emoji} />)
             )}
         </div>
-        <EmojiMap />
       </div>
     </div>
   );
