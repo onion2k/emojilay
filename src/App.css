@@ -13,26 +13,23 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
+.scaleup {
+  animation-name: App-logo-spin;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  animation-timing-function:  linear;
+  animation-iteration-count: 1;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  0% {
+    font-size: 0;
   }
-  to {
-    transform: rotate(360deg);
+  95% {
+    opacity: 1;
+  }
+  100% {
+    font-size: 30em;
+    opacity: 0;
   }
 }
